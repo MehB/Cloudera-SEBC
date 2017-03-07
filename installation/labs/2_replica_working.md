@@ -1,6 +1,9 @@
 MySQL Installation:
 
+
 4.
+
+```
 Setting the root password ensures that nobody can log into the MariaDB
 root user without the proper authorisation.
 
@@ -49,10 +52,12 @@ All done!  If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
 Thanks for using MariaDB!
+```
 
 
 5.
 
+```
 MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'node01'@'ip-172-31-16-8' IDENTIFIED BY 'manager';
 Query OK, 0 rows affected (0.00 sec)
 
@@ -62,8 +67,11 @@ Query OK, 0 rows affected (0.00 sec)
 MariaDB [(none)]> FLUSH TABLES WITH READ LOCK;
 Query OK, 0 rows affected (0.00 sec)
 
+```
 
 6.
+
+```
 MariaDB [(none)]> SHOW MASTER STATUS;
 +-------------------------+----------+--------------+------------------+
 | File                    | Position | Binlog_Do_DB | Binlog_Ignore_DB |
@@ -72,24 +80,23 @@ MariaDB [(none)]> SHOW MASTER STATUS;
 +-------------------------+----------+--------------+------------------+
 1 row in set (0.00 sec)
 
-MariaDB [(none)]>
-
-
 MariaDB [(none)]> UNLOCK TABLES;
 Query OK, 0 rows affected (0.00 sec)
+```
 
 
 7.
-
-
+```
 MariaDB [(none)]> CHANGE MASTER TO MASTER_HOST='ip-172-31-14-88.us-west-2.compute.internal', MASTER_USER='node01', MASTER_PASSWORD='manager', MASTER_LOG_FILE='mysql_binary_log.000010', MASTER_LOG_POS=430;
 Query OK, 0 rows affected (0.01 sec)
 
 MariaDB [(none)]> START SLAVE;
 Query OK, 0 rows affected (0.00 sec)
+```
 
 8.
 
+```
 MariaDB [(none)]> SHOW SLAVE STATUS \G
 *************************** 1. row ***************************
                Slave_IO_State: Waiting for master to send event
@@ -133,13 +140,12 @@ Master_SSL_Verify_Server_Cert: No
   Replicate_Ignore_Server_Ids:
              Master_Server_Id: 2
 1 row in set (0.00 sec)
-
-
-
+```
 
 
 9. Create Databases and users:
 
+```
 MariaDB [(none)]> create database amon DEFAULT CHARACTER SET utf8;
 ERROR 1007 (HY000): Can't create database 'amon'; database exists
 MariaDB [(none)]>
@@ -180,12 +186,14 @@ Query OK, 1 row affected (0.00 sec)
 
 MariaDB [(none)]> grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'navms_password';
 Query OK, 0 rows affected (0.00 sec)
+```
 
+- Create Databases for Hue and Oozie:
 
--> Create Databases for Hue and Oozie:
-
+```
 create database oozie DEFAULT CHARACTER SET utf8;
 grant all privileges on oozie.* to 'oozie'@'%' identified by 'oozie';
 
 create database hue DEFAULT CHARACTER SET utf8;
 grant all on hue.* to 'hue'@'%' identified by 'hue';
+```
