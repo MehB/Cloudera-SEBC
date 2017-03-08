@@ -1,7 +1,15 @@
-MySQL Installation:
+#### MySQL Installation:
 
 
-4.
+###### 4. `/usr/bin/mysql_secure_installation`
+
+- Set password protection for the server
+- Revoke permissions for anonymous users
+- Permit remote privileged login
+- Remove test databases
+- Refresh privileges in memory
+- Refreshes the mysqld service
+
 
 ```
 Setting the root password ensures that nobody can log into the MariaDB
