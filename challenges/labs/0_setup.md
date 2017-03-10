@@ -8,8 +8,8 @@
 
 | Name  | Private DNS | Private IP |
 | ------------- | ------------- | ------------- |
-| Cloudera manager | ec2-52-41-186-187.us-west-2.compute.amazonaws.com |52.41.186.187 |
-| Master  | ec2-52-42-83-199.us-west-2.compute.amazonaws.com  |52.42.83.199  |
+| Master | ec2-52-41-186-187.us-west-2.compute.amazonaws.com |52.41.186.187 |
+| Cloudera Manager  | ec2-52-42-83-199.us-west-2.compute.amazonaws.com  |52.42.83.199  |
 | Worker  | ec2-35-163-78-230.us-west-2.compute.amazonaws.com |35.163.78.230 |
 | Worker | ec2-35-164-44-247.us-west-2.compute.amazonaws.com |35.164.44.247  |
 | Worker  | ec2-52-33-157-106.us-west-2.compute.amazonaws.com  |52.33.157.106 |
